@@ -1,0 +1,77 @@
+@use "sass:map";
+// theme
+$theme: (
+  'light': #ffffff,
+  'black': #3e4459,
+  'primary': #36bbd9,
+  'danger': #c9302c,
+  'primary-dark': #239db9
+);
+
+$system-default-font: // Cross-platform generic font family (default user interface font)
+// system-ui,
+// Safari for macOS and iOS (San Francisco) -apple-system,
+  // Chrome < 56 for macOS (San Francisco) BlinkMacSystemFont,
+  // Windows + 'Segoe UI',
+  // Android Roboto,
+  // Basic web fallback 'Helvetica Neue', Arial,
+  // Linux 'Noto Sans', 'Liberation Sans',
+  // Sans serif fallback sans-serif,
+  // Emoji fonts
+    'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+
+// font
+$font-family-base: $system-default-font;
+$font-color-base: map-get($theme, base);
+$font-size-base: 16px;
+$global-line-height: 1.5;
+
+// Body  ----
+$body-bg: #f8f8f8;
+$body-color: map-get(
+  $map: $theme,
+  $key: 'black'
+);
+
+// $footer-bg: $gray-400;
+// $footer-color: $gray-900;
+
+// link
+$link-color: map-get($theme, base);
+$link-hover-color: #00d7ff;
+$link-active-color: map-get($theme, sub);
+
+// $nav-link-color: map-get($theme, light);
+// $nav-link-hover-color: #00d7ff;
+
+// $footer-bg-color: #323237;
+// $footer-title-color: #737d82;
+// $footer-list-item-color: #f6f6f6;
+// $footer-list-item-hover-color: #b9bcbf;
+
+// $footer-icon-text-color: #b9bcbf;
+
+// $footer-select: #fff;
+
+// box / container
+$box-width: (
+  xl: 1140px,
+  lg: 940px,
+  md: 720px,
+  sm: 576px
+);
+$box-space: 15px;
+
+// breakpoint
+$breakpoints: (
+  xl: 1200px,
+  lg: 992px,
+  md: 768px,
+  sm: 554px
+);
+
+// others
+$global-block-radius: 10px;
+$global-block-shadow: 10px;
+$global-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
