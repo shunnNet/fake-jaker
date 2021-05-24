@@ -17,12 +17,11 @@ $system-default-font: // Cross-platform generic font family (default user interf
   // Basic web fallback 'Helvetica Neue', Arial,
   // Linux 'Noto Sans', 'Liberation Sans',
   // Sans serif fallback sans-serif,
-  // Emoji fonts
-    'Apple Color Emoji',
+  // Emoji fonts 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
 
 // font
-$font-family-base: $system-default-font;
+$font-family-base: 'Noto Sans TC', sans-serif;
 $font-color-base: map-get($theme, base);
 $font-size-base: 16px;
 $global-line-height: 1.5;
