@@ -3,6 +3,18 @@
     <FaIconText class="testIcon" icon="user-shield" :icon-class="'testIcon'">
       找打掃
     </FaIconText>
+    <!-- <Star :rank="1"/> -->
+
+    <RankList :rank="0" />
+    <RankCard
+      :rankInfo="{
+        url: require('@/assets/images/Oval.jpg'),
+        location: '台北市',
+        name: '啊潔',
+        rank: 4.7,
+        price: '$500/hr',
+      }"
+    />
     <List
       :list="[
         { content: 'A', icon: 'CircleSolid' },
@@ -23,10 +35,16 @@
 
 <script>
 import List from '~/components/libs/List.vue'
+import Star from '@/components/Star.vue'
+import RankList from '@/components/RankList.vue'
+import RankCard from '@/components/layout/RankCard.vue'
 
 export default {
   components: {
     List,
+    RankList,
+    Star,
+    RankCard,
   },
   mounted() {},
 }
