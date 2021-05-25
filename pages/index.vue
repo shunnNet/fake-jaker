@@ -1,53 +1,35 @@
 <template>
   <div class="container">
-    <div>
-      <a href="#fredf" class="testIcon">132456789456136</a>
-      <FaIconText class="testIcon" icon="user-shield" :icon-class="'testIcon'">
-        找打掃
-      </FaIconText>
-      <div class="testBox box">123456789</div>
-      <Arrow />
-      <!-- <Swiper>
-        <SwiperSlide>123</SwiperSlide>
-        <SwiperSlide>456</SwiperSlide>
-        <SwiperSlide>789</SwiperSlide>
-      </Swiper> -->
-    </div>
-    <div>
-      <!-- <FaIconText reverse> 企業清潔 </FaIconText> -->
-    </div>
+    <FaIconText class="testIcon" icon="user-shield" :icon-class="'testIcon'">
+      找打掃
+    </FaIconText>
+    <List
+      :list="[
+        { content: 'A', icon: 'CircleSolid' },
+        { content: 'B' },
+        { content: 'C' },
+      ]"
+      #default="{ item }"
+    >
+      <IconText :icon="item.icon || 'RedCross'">
+        {{ item.content }}
+      </IconText>
+    </List>
   </div>
 </template>
 
 <script>
-import FaIconText from '@/components/libs/FaIconText.vue'
-// import { watchMedia } from '@/plugins/mediaStore.js'
-
-// watchMedia('992', () => {
-//   console.log('992')
-// })
+import List from '~/components/libs/List.vue'
 
 export default {
   components: {
-    FaIconText,
+    List,
   },
-  mounted() {
-    this.$watchMedia('992', () => {
-      console.log(`%c 992 `, 'background: lightseagreen; color: #fff')
-    })
-  },
+  mounted() {},
 }
 </script>
 
 <style lang="scss">
-.testBox {
-  width: 90%;
-}
-.testIcon {
-  @extend %linkImage;
-  display: flex;
-  max-height: 200px;
-}
 .container {
   margin: 0 auto;
   min-height: 100vh;
