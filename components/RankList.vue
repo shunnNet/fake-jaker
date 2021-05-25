@@ -12,10 +12,7 @@ export default {
   },
   render(h, context) {
     // TODO: make decimal have .0
-    console.log(
-      `%c ${context.props.rank} `,
-      'background: lightseagreen; color: #fff'
-    )
+
 
     let stars = []
 
