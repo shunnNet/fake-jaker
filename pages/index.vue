@@ -15,6 +15,9 @@
         {{ item.content }}
       </IconText>
     </List>
+    <button type="button" class="btn btn--primary btn--narrow">
+      <FaIconText icon="angle-right"> 開始預約 </FaIconText>
+    </button>
   </div>
 </template>
 
