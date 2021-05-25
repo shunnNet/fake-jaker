@@ -11,9 +11,9 @@
   >
     <span class="c-field__label" v-if="label"> {{ label }} </span>
     <div class="c-field__wrap" tabIndex="0" ref="unit">
-      <!-- <input class="c-field__unit" :value="showLabel" readonly /> -->
+      <slot name="prepend" :iconClass="'c-field__icon'"></slot>
       <div class="c-field__unit">{{ showLabel }}</div>
-      <Arrow
+      <Triangle
         class="c-select__drop-icon"
         :class="{ 'c-select__drop-icon--show': !show }"
       />
@@ -39,13 +39,12 @@
 </template>
 
 <script>
-
 import baseUtility from './mixins/baseUtility.js'
 import validatable from './mixins/validatable.js'
 import focusable from './mixins/focusable.js'
 import TransitionSlide from '../animation/TransitionSlide.vue'
 import stateful from './mixins/stateful.js'
-import theme from "./mixins/theme.js"
+import theme from './mixins/theme.js'
 
 export default {
   $_veeValidate: {
@@ -87,7 +86,7 @@ export default {
       return this.value && typeof this.value === 'object'
     },
     showLabel() {
-      if (this.options.length === 0) return ''
+      if (this.options.length === 0) return this.placeholder
 
       let selected = this.valueIsObject
         ? this.options.find(
@@ -95,7 +94,7 @@ export default {
           )
         : this.options.find((opt) => opt.value === this.innerValue)
 
-      return selected ? selected.label : ''
+      return selected && selected.label ? selected.label : this.placeholder
     },
   },
 
