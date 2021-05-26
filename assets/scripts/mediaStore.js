@@ -1,4 +1,9 @@
 const medias = {
+  '1200': {
+    watch: '(min-width: 1200px)',
+    callbacks: [],
+    mql: null
+  },
   '992': {
     watch: '(min-width: 992px)',
     callbacks: [],

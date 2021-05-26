@@ -20,11 +20,11 @@
 export default {
   props: {
     enterDuration: {
-      default: () => "0.3s",
+      default: () => '0.4s',
       type: String,
     },
     leaveDuration: {
-      default: () => "0.4s",
+      default: () => '0.2s',
       type: String,
     },
     enterFunction: {
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getMaxLength(el) {
-      const actualLength = el[this.scrollLengthProp] +1 // NOTE: scollHeight don't have float value
+      const actualLength = el[this.scrollLengthProp] + 1
 
       return actualLength > this.max
         ? this.max
@@ -76,14 +76,13 @@ export default {
         : actualLength
     },
     setOverflow(el, state) {
-      el.style.overflowY = state
+      el.style.overflow = state
     },
     setLength(el, length) {
-      //  TODO: stunning when target has padding or margin
       el.style[this.lengthProp] = `${length}px`
     },
     beforeEnter(el) {
-      el.style.transition = `${this.lengthProp} ${this.enterDuration} ${this.enterFunction}, transform ${this.enterDuration}, opacity ${this.enterDuration}`
+      el.style.transition = `${this.lengthProp} ${this.enterDuration} ${this.enterFunction}`
       this.setLength(el, 0)
       this.setOverflow(el, 'hidden')
     },
@@ -97,13 +96,12 @@ export default {
       this.setOverflow(el, 'auto')
     },
     beforeLeave(el) {
-      el.style.transition = `${this.lengthProp} ${this.leaveDuration} ${this.leaveFunction}, opacity 0.2s`
+      el.style.transition = `${this.lengthProp} ${this.leaveDuration} ${this.leaveFunction}`
       this.setOverflow(el, 'hidden')
     },
     leave(el) {
       this.setLength(el, 0)
       this.open = false
-      // el.style.transition = ""
     },
   },
   mounted() {
@@ -119,24 +117,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.slide-enter-from {
-  transform: translate3d(-20px,0,0);
-  opacity: 0;
-}
-.slide-enter-active{
-  // transition: opacity .2s;
-}
-.slide-enter-to {
-  transform: translate3d(0px,0,0);
-  opacity: 1;
-}
-.slide-leave-from {
-  opacity: 1;
-}
-.slide-leave-to {
-  opacity: 0;
-}
-
-</style>

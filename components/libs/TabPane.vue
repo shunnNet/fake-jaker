@@ -1,6 +1,6 @@
 <template>
-  <div class="tab-pane" v-show="active">
-    <slot></slot>
+  <div class="tab__pane" :class="{'tab__pane--active': active}"  v-show="active">
+    <slot :isActive="active"></slot>
   </div>
 </template>
 <script>
@@ -37,12 +37,13 @@
 */
 export default {
   props: {
-    name: String
+    name: String,
   },
+  inject: ['activeClass'],
   computed: {
     active() {
       return this.$parent.target === this.name
-    }
-  }
+    },
+  },
 }
 </script>

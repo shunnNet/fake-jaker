@@ -103,8 +103,8 @@
     align-items: center;
   }
   &__drop-icon {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 8px;
     transition: transform 0.2s;
     transform: rotateZ(180deg);
     transform-origin: center;
@@ -233,6 +233,8 @@
     }
   }
 }
+
+
 
 // .c-submit {
 //   &:extend(.c-btn all);

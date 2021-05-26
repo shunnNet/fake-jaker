@@ -31,64 +31,87 @@
                +-----------------+
 */
 export default {
-  name: "Tabs",
+  name: 'Tabs',
   props: {
     value: [Number, String],
     vertical: {
-      type: Boolean
+      type: Boolean,
     },
     horizontal: {
-      type: Boolean
+      type: Boolean,
+    },
+    activeClass: {
+      type: String,
+      default: '',
+    },
+  },
+  provide() {
+    return {
+      activeClass: 'tab--active',
     }
   },
   data() {
     return {
-      target: this.value
+      target: this.value,
     }
   },
   methods: {
     getContent(h) {
       return this.$slots.default.map((ele) => {
+        
         return h(
-          "div",
+          'div',
           {
-            class: ele.data.staticClass || null,
+            class: [
+              'tab__label',
+              { 'tab__label--active': this.target === ele.componentOptions.propsData.name },
+            ],
             on: {
               click: () => this.clickEvent(ele.componentOptions.propsData.name),
-              mouseenter: () => this.clickEvent(ele.componentOptions.propsData.name),
-            }
+            },
           },
           [
             ele.data.attrs.label ||
-              ele.componentOptions.children.filter((vnode) => vnode.data && vnode.data.slot === "label")
+              ele.componentOptions.children.find(
+                (vnode) => vnode.data && vnode.data.slot === 'label'
+              ),
           ]
         )
       })
     },
     clickEvent(name) {
       this.target = name
-      this.$emit("input", name)
-    }
+      this.$emit('input', name)
+    },
   },
   render(h) {
     const header = h(
-      "div",
+      'div',
       {
         class: {
           tabs__header: true,
-          tabs__header__horizontal: this.horizontal
-        }
+          'tabs__header--horizontal': this.horizontal,
+        },
       },
       this.getContent(h)
     )
     const panels = h(
-      "div",
+      'div',
       {
-        class: "tabs__content"
+        class: 'tabs__content',
       },
       this.$slots.default
     )
-    return h("div", {}, [header, panels])
-  }
+    return h('div', {}, [header, panels])
+  },
 }
 </script>
+
+<style lang="scss">
+.tabs__header--horizontal {
+  display: flex;
+}
+.tab__label {
+  flex: 1;
+}
+</style>

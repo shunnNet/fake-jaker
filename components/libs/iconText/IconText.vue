@@ -1,6 +1,15 @@
-<template >
-  <div class="iconText" :is="tag" :class="{ 'iconText--reverse': reverse }">
-    <font-awesome-icon :icon="icon" :class="['iconText-icon', iconClass]" />
+<template functional>
+  <div
+    :is="props.tag"
+    :class="[
+      'iconText',
+      { 'iconText--reverse': props.reverse },
+      data.staticClass,
+      data.class,
+    ]"
+    v-on="data.on"
+  >
+    <component :is="props.icon" :class="['iconText-icon', props.iconClass]" />
     <slot></slot>
   </div>
 </template>
@@ -8,7 +17,6 @@
 <script>
 export default {
   props: {
-    // slot
     tag: {
       type: String,
       default: 'div',
@@ -30,19 +38,23 @@ export default {
 
 <style lang="scss">
 .iconText {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  padding-left: 1.5em;
+  padding-right: 0;
   &-icon {
-    max-height: 1.5em;
-    max-width: 1.5em;
-    margin-right: 15px;
+    position: absolute;
+    left: 0;
   }
   &--reverse {
     flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 1.5em;
     .iconText-icon {
-      margin-right: 0;
-      margin-left: 15px;
+      left: auto;
+      right: 0;
     }
   }
 }
