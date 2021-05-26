@@ -30,7 +30,7 @@
             <font-awesome-icon icon="paw" class="c-field__icon" />
             <span class="c-field__unit">家中有寵物?</span>
           </div>
-            <CSwitch v-model="swi" />
+          <CSwitch v-model="swi" />
         </div>
 
         <button type="submit" class="btn btn--primary serviceTab__submit">
@@ -91,7 +91,8 @@ export default {
 $active-bg-color: rgba(255, 255, 255, 0.8);
 
 .serviceTab {
-  width: 460px;
+  
+  width: 100%;
   .tab__label {
     padding: 8px 0;
     margin-right: 3px;
@@ -147,7 +148,6 @@ $active-bg-color: rgba(255, 255, 255, 0.8);
       background-color: #ffffff;
       padding-right: 20px;
       padding-left: 12px;
-
     }
     &__icon {
       color: #bbb7ba;
@@ -156,7 +156,6 @@ $active-bg-color: rgba(255, 255, 255, 0.8);
       margin-right: 8px;
     }
     &__unit {
-
     }
   }
   .c-field--pet {

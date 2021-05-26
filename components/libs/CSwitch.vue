@@ -58,6 +58,7 @@ export default {
   display: flex;
   font-size: 14px;
   font-weight: 400;
+  background-color: #fff;
   &__spot {
     position: relative;
     z-index: 1;

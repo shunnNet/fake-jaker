@@ -1,5 +1,5 @@
 <template functional>
-  <article class="rankCard">
+  <article class="rankCard" :class="[data.staticClass, data.class]">
     <img
       :src="props.rankInfo.url"
       :alt="props.rankInfo.name"

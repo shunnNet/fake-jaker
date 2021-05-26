@@ -4,8 +4,8 @@
     :class="[
       'iconText',
       { 'iconText--reverse': props.reverse },
-      data.staticStyle,
-      data.style,
+      data.staticClass,
+      data.class,
     ]"
     v-on="data.on"
   >
