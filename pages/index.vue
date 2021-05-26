@@ -20,13 +20,7 @@
         時數計算教學
       </button>
     </section>
-    <section class="serviceList">
-      <div class="box">
-        <button type="button" class="btn btn--primary serviceList__trigger">
-          開始預約>
-        </button>
-      </div>
-    </section>
+    <ServiceCardList />
     <section class="others">
       <div class="box">
         <h2 class="others__title">其他未服務內容</h2>
@@ -85,11 +79,11 @@
 </template>
 
 <script>
-import List from '~/components/libs/List.vue'
-import Star from '@/components/Star.vue'
 import RankList from '@/components/RankList.vue'
 import RankCard from '@/components/layout/RankCard.vue'
 import ServiceTabs from '@/components/layout/ServiceTabs.vue'
+import ServiceCardList from '@/components/layout/ServiceCardList.vue'
+import List from '~/components/libs/List.vue'
 
 export default {
   data() {
@@ -200,8 +194,8 @@ export default {
     ServiceTabs,
     List,
     RankList,
-    Star,
     RankCard,
+    ServiceCardList,
   },
   mounted() {
     this.$watchMedia('992', this.watchMedia)
@@ -218,6 +212,9 @@ export default {
 </script>
 
 <style lang="scss">
+.pgIndex {
+  padding-bottom: 50px;
+}
 .entryBanner {
   display: flex;
   justify-content: center;
@@ -287,21 +284,6 @@ export default {
   }
 }
 
-.serviceList {
-  margin-top: 20px;
-
-  &__trigger {
-    margin-top: 32px;
-    width: 100%;
-    max-width: 300px;
-  }
-  @include lg {
-    margin-top: 50px;
-    &__trigger {
-      margin-top: 50px;
-    }
-  }
-}
 .others {
   margin-top: 32px;
   background-color: #fff;
@@ -413,6 +395,9 @@ export default {
       margin-right: 8px;
     }
   }
+  .swiper-slide {
+    width: auto !important;
+  }
 }
 .featureCard {
   display: flex;
@@ -442,12 +427,5 @@ export default {
       text-align: center;
     }
   }
-}
-
-.swiper-slide {
-  width: auto !important;
-}
-.pgIndex {
-  padding-bottom: 50px;
 }
 </style>
